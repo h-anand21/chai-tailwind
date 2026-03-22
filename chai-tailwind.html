@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChaiTailwind — Utility-First CSS Engine</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="chai-tailwind.css" />
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════
+     HERO
+═══════════════════════════════════ -->
+  <header class="page-header">
+
+    <!-- badge with green live dot -->
+    <div class="badge">v1.0.0 — Utility-First CSS Engine</div>
+
+    <!-- massive split-color title -->
+    <h1>
+      <span class="hero-chai">Chai</span><span class="hero-tailwind">Tailwind</span>
+    </h1>
+
+    <!-- centered subtitle -->
+    <p class="hero-sub">
+      A lightweight, zero-dependency CSS utility engine. 
+      Write<code>chai-*</code> classes in your HTML — the engine parses them at
+      runtime and applies inline styles.
+    </p>
+
+    <!-- syntax-highlighted code snippet -->
+    <div class="hero-code">
+      <span class="hc-tag">&lt;div</span> <span class="hc-attr">class</span><span class="hc-eq">=</span><span class="hc-str">"chai-flex chai-gap-4 chai-p-6 chai-bg-blue-100 chai-rounded-xl"</span><span class="hc-tag">&gt;</span><br>
+      &nbsp;&nbsp;<span class="hc-tag">&lt;button</span> <span class="hc-attr">class</span><span class="hc-eq">=</span><span class="hc-str">"chai-bg-blue-600 chai-text-white chai-px-4 chai-py-2 chai-rounded-lg chai-font-semibold"</span><span class="hc-tag">&gt;</span>Click<span class="hc-tag">&lt;/button&gt;</span><br>
+      <span class="hc-tag">&lt;/div&gt;</span>
+    </div>
+
+  </header>
+
+  <!-- ═══════════════════════════════════
+     LIVE PLAYGROUND
+═══════════════════════════════════ -->
+  <div class="run-bar">
+    <button class="run-btn" onclick="runPreview()">▶ Run</button>
+    <span class="run-hint">Edit the HTML on the left, then click Run (or Ctrl+Enter)</span>
+  </div>
+  <div class="playground">
+    <div class="pane pane-left">
+      <div class="pane-label">✦ HTML Input</div>
+      <textarea id="html-input" spellcheck="false" placeholder="Write HTML with chai-* classes here…">&lt;div class=&quot;chai-p-8 chai-bg-amber-50 chai-rounded-xl chai-shadow-lg&quot; style=&quot;font-family:sans-serif&quot;&gt;
+
+  &lt;h2 class=&quot;chai-text-2xl chai-font-bold chai-text-amber-800 chai-mb-4 chai-tracking-tight&quot;&gt;
+    Hello, ChaiTailwind! ☕
+  &lt;/h2&gt;
+
+  &lt;p class=&quot;chai-text-base chai-text-gray-600 chai-leading-relaxed chai-mb-6&quot;&gt;
+    This card is styled entirely with chai-* utility classes.
+    No stylesheets were harmed in the making of this demo.
+  &lt;/p&gt;
+
+  &lt;div class=&quot;chai-flex chai-gap-3&quot;&gt;
+    &lt;button class=&quot;chai-bg-amber-500 chai-text-white chai-px-5 chai-py-2 chai-rounded-lg chai-font-semibold chai-cursor-pointer&quot;&gt;
+      Get Started
+    &lt;/button&gt;
+    &lt;button class=&quot;chai-border chai-border-color-amber-400 chai-text-amber-700 chai-px-5 chai-py-2 chai-rounded-lg chai-font-semibold chai-cursor-pointer&quot;&gt;
+      Learn More
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;</textarea>
+    </div>
+    <div class="pane pane-right">
+      <div class="pane-label">◉ Preview</div>
+      <iframe id="preview-frame"></iframe>
+    </div>
+  </div>
+
+  <!-- DOCS / REFERENCE -->
+  <div class="docs">
+    <div class="docs-inner">
+      <h2>Utility Categories</h2>
+      <p class="subtitle">Every major CSS concern — mapped to a readable <code>chai-*</code> utility.</p>
+      <div class="utility-grid">
+
+        <!-- SPACING -->
+        <div class="utility-card">
+          <div class="card-chrome">
+            <span class="card-dot red"></span>
+            <span class="card-dot yellow"></span>
+            <span class="card-dot green"></span>
+            <span class="card-chrome-title">Spacing</span>
+          </div>
+          <div class="card-body">
+            <span class="sp-pill">chai-p-2 → padding: 0.5rem</span>
+            <span class="sp-pill">chai-px-6 &nbsp;chai-py-2</span>
+            <span class="sp-pill">chai-m-2 &nbsp;chai-p-3</span>
+          </div>
+          <div class="card-code">
+            <span style="color:#5a4a3a">/* Scale: n × 0.25rem */</span><br>
+            <span class="cc-class">chai-p-4</span><span class="cc-arrow"> → </span><span class="cc-prop">padding: 1rem</span><br>
+            <span class="cc-class">chai-px-6</span><span class="cc-arrow"> → </span><span class="cc-prop">paddingLeft/Right: 1.5rem</span><br>
+            <span class="cc-class">chai-mt-8</span><span class="cc-arrow"> → </span><span class="cc-prop">marginTop: 2rem</span><br>
+            <span class="cc-class">chai-mx-auto</span><span class="cc-arrow"> → </span><span class="cc-prop">margin: 0 auto</span>
+          </div>
+        </div>
+
+        <!-- COLORS -->
+        <div class="utility-card">
+          <div class="card-chrome">
+            <span class="card-dot red"></span>
+            <span class="card-dot yellow"></span>
+            <span class="card-dot green"></span>
+            <span class="card-chrome-title">Colors</span>
+          </div>
+          <div class="card-body">
+            <div class="color-grid">
+              <div class="color-swatch" style="background:#3b82f6"></div>
+              <div class="color-swatch" style="background:#f87171"></div>
+              <div class="color-swatch" style="background:#22c55e"></div>
+              <div class="color-swatch" style="background:#fbbf24"></div>
+              <div class="color-swatch" style="background:#a78bfa"></div>
+              <div class="color-swatch" style="background:#ec4899"></div>
+              <div class="color-swatch" style="background:#06b6d4"></div>
+              <div class="color-swatch" style="background:#22c55e"></div>
+              <div class="color-swatch" style="background:#1e293b"></div>
+              <div class="color-swatch" style="background:#f43f5e"></div>
+            </div>
+          </div>
+          <div class="card-code">
+            <span class="cc-class">chai-bg-blue-500</span><span class="cc-arrow"> → </span><span class="cc-prop">backgroundColor</span><br>
+            <span class="cc-class">chai-text-red-600</span><span class="cc-arrow"> → </span><span class="cc-prop">color</span><br>
+            <span class="cc-class">chai-border-green</span><span class="cc-arrow"> → </span><span class="cc-bold">borderColor</span><br>
+            <span style="color:#3a2a1a">/* Shades: 50 100 200 … 950 */</span>
+          </div>
+        </div>
+
+        <!-- TYPOGRAPHY -->
+        <div class="utility-card">
+          <div class="card-chrome">
+            <span class="card-dot red"></span>
+            <span class="card-dot yellow"></span>
+            <span class="card-dot green"></span>
+            <span class="card-chrome-title">Typography</span>
+          </div>
+          <div class="card-body">
+            <div class="typo-display">Display</div>
+            <div class="typo-sub">Subheading — wide tracking</div>
+            <div class="typo-body">Body text, italic and relaxed line height for comfortable reading.</div>
+            <div class="typo-label">Label / Caption</div>
+          </div>
+          <div class="card-code">
+            <span class="cc-class">chai-text-4xl</span><span class="cc-arrow"> → </span><span class="cc-prop">font-size: 2.25rem</span><br>
+            <span class="cc-class">chai-font-bold</span><span class="cc-arrow"> → </span><span class="cc-prop">font-weight: 700</span><br>
+            <span class="cc-class">chai-leading-relaxed</span><span class="cc-arrow"> → </span><span class="cc-prop">line-height: 1.625</span><br>
+            <span class="cc-class">chai-tracking-wide</span><span class="cc-arrow"> → </span><span class="cc-prop">letter-spacing: 0.025em</span>
+          </div>
+        </div>
+
+        <!-- BORDERS & SHADOWS -->
+        <div class="utility-card">
+          <div class="card-chrome">
+            <span class="card-dot red"></span>
+            <span class="card-dot yellow"></span>
+            <span class="card-dot green"></span>
+            <span class="card-chrome-title">Borders &amp; Shadows</span>
+          </div>
+          <div class="card-body">
+            <div class="util-row"><span class="util-class">chai-border</span><span class="util-css">1px solid currentColor</span></div>
+            <div class="util-row"><span class="util-class">chai-border-2</span><span class="util-css">2px solid currentColor</span></div>
+            <div class="util-row"><span class="util-class">chai-rounded-lg</span><span class="util-css">border-radius: 8px</span></div>
+            <div class="util-row"><span class="util-class">chai-rounded-full</span><span class="util-css">border-radius: 9999px</span></div>
+            <div class="util-row"><span class="util-class">chai-shadow-md</span><span class="util-css">box-shadow: (med)</span></div>
+          </div>
+          <div class="card-code">
+            <span class="cc-class">chai-ring-2</span><span class="cc-arrow"> → </span><span class="cc-prop">box-shadow: 0 0 0 2px …</span><br>
+            <span class="cc-class">chai-border-dashed</span><span class="cc-arrow"> → </span><span class="cc-prop">border-style: dashed</span>
+          </div>
+        </div>
+
+        <!-- LAYOUT & FLEX -->
+        <div class="utility-card">
+          <div class="card-chrome">
+            <span class="card-dot red"></span>
+            <span class="card-dot yellow"></span>
+            <span class="card-dot green"></span>
+            <span class="card-chrome-title">Layout &amp; Flexbox</span>
+          </div>
+          <div class="card-body">
+            <div class="util-row"><span class="util-class">chai-flex</span><span class="util-css">display: flex</span></div>
+            <div class="util-row"><span class="util-class">chai-flex-col</span><span class="util-css">flex-direction: column</span></div>
+            <div class="util-row"><span class="util-class">chai-items-center</span><span class="util-css">align-items: center</span></div>
+            <div class="util-row"><span class="util-class">chai-justify-between</span><span class="util-css">space-between</span></div>
+            <div class="util-row"><span class="util-class">chai-flex-1</span><span class="util-css">flex: 1 1 0%</span></div>
+          </div>
+          <div class="card-code">
+            <span class="cc-class">chai-flex-wrap</span><span class="cc-arrow"> → </span><span class="cc-prop">flex-wrap: wrap</span><br>
+            <span class="cc-class">chai-grow</span><span class="cc-arrow"> → </span><span class="cc-prop">flex-grow: 1</span>
+          </div>
+        </div>
+
+        <!-- GRID -->
+        <div class="utility-card">
+          <div class="card-chrome">
+            <span class="card-dot red"></span>
+            <span class="card-dot yellow"></span>
+            <span class="card-dot green"></span>
+            <span class="card-chrome-title">Grid</span>
+          </div>
+          <div class="card-body">
+            <div class="util-row"><span class="util-class">chai-grid</span><span class="util-css">display: grid</span></div>
+            <div class="util-row"><span class="util-class">chai-grid-cols-3</span><span class="util-css">repeat(3, 1fr)</span></div>
+            <div class="util-row"><span class="util-class">chai-col-span-2</span><span class="util-css">span 2 / span 2</span></div>
+            <div class="util-row"><span class="util-class">chai-gap-x-4</span><span class="util-css">column-gap: 16px</span></div>
+            <div class="util-row"><span class="util-class">chai-gap-y-6</span><span class="util-css">row-gap: 24px</span></div>
+          </div>
+          <div class="card-code">
+            <span class="cc-class">chai-grid-cols-4</span><span class="cc-arrow"> → </span><span class="cc-prop">repeat(4, minmax(0,1fr))</span>
+          </div>
+        </div>
+
+        <!-- SIZING -->
+        <div class="utility-card">
+          <div class="card-chrome">
+            <span class="card-dot red"></span>
+            <span class="card-dot yellow"></span>
+            <span class="card-dot green"></span>
+            <span class="card-chrome-title">Sizing</span>
+          </div>
+          <div class="card-body">
+            <div class="util-row"><span class="util-class">chai-w-full</span><span class="util-css">width: 100%</span></div>
+            <div class="util-row"><span class="util-class">chai-h-16</span><span class="util-css">height: 64px</span></div>
+            <div class="util-row"><span class="util-class">chai-w-1/2</span><span class="util-css">width: 50%</span></div>
+            <div class="util-row"><span class="util-class">chai-max-w-prose</span><span class="util-css">max-width: 65ch</span></div>
+            <div class="util-row"><span class="util-class">chai-min-h-screen</span><span class="util-css">min-height: 100vh</span></div>
+          </div>
+          <div class="card-code">
+            <span class="cc-class">chai-w-screen</span><span class="cc-arrow"> → </span><span class="cc-prop">width: 100vw</span>
+          </div>
+        </div>
+
+        <!-- TRANSITIONS & TRANSFORMS -->
+        <div class="utility-card">
+          <div class="card-chrome">
+            <span class="card-dot red"></span>
+            <span class="card-dot yellow"></span>
+            <span class="card-dot green"></span>
+            <span class="card-chrome-title">Transitions &amp; Transforms</span>
+          </div>
+          <div class="card-body">
+            <div class="util-row"><span class="util-class">chai-transition</span><span class="util-css">transition all</span></div>
+            <div class="util-row"><span class="util-class">chai-duration-300</span><span class="util-css">300ms</span></div>
+            <div class="util-row"><span class="util-class">chai-ease-in-out</span><span class="util-css">ease-in-out</span></div>
+            <div class="util-row"><span class="util-class">chai-scale-110</span><span class="util-css">scale(1.1)</span></div>
+            <div class="util-row"><span class="util-class">chai-rotate-45</span><span class="util-css">rotate(45deg)</span></div>
+          </div>
+          <div class="card-code">
+            <span class="cc-class">chai-translate-x-4</span><span class="cc-arrow"> → </span><span class="cc-prop">translateX(16px)</span>
+          </div>
+        </div>
+
+        <!-- MISC -->
+        <div class="utility-card">
+          <div class="card-chrome">
+            <span class="card-dot red"></span>
+            <span class="card-dot yellow"></span>
+            <span class="card-dot green"></span>
+            <span class="card-chrome-title">Misc Utilities</span>
+          </div>
+          <div class="card-body">
+            <div class="util-row"><span class="util-class">chai-opacity-50</span><span class="util-css">opacity: 0.5</span></div>
+            <div class="util-row"><span class="util-class">chai-overflow-hidden</span><span class="util-css">overflow: hidden</span></div>
+            <div class="util-row"><span class="util-class">chai-cursor-pointer</span><span class="util-css">cursor: pointer</span></div>
+            <div class="util-row"><span class="util-class">chai-select-none</span><span class="util-css">user-select: none</span></div>
+            <div class="util-row"><span class="util-class">chai-invisible</span><span class="util-css">visibility: hidden</span></div>
+          </div>
+          <div class="card-code">
+            <span class="cc-class">chai-sr-only</span><span class="cc-arrow"> → </span><span class="cc-prop">screenreader clip</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- ═══════════════════════════════════
+     LIVE DEMO STRIP (powered by the engine itself)
+═══════════════════════════════════ -->
+  <div class="demo-strip">
+    <h2>Live Demo — <span>styled by ChaiTailwind</span></h2>
+    <div class="demo-boxes">
+      <div class="demo-box chai-bg-blue-500 chai-rounded-lg chai-px-5 chai-py-3">chai-bg-blue-500</div>
+      <div class="demo-box chai-bg-green-500 chai-rounded-full chai-px-5 chai-py-3">chai-rounded-full</div>
+      <div class="demo-box chai-bg-rose-500 chai-rounded-lg chai-px-5 chai-py-3 chai-shadow-xl">chai-shadow-xl</div>
+      <div class="demo-box chai-bg-violet-600 chai-rounded-lg chai-px-5 chai-py-3 chai-tracking-widest chai-uppercase"
+        style="font-size:.65rem">chai-uppercase</div>
+      <div class="demo-box chai-bg-amber-400 chai-rounded-lg chai-px-5 chai-py-3 chai-text-black chai-font-bold">
+        chai-text-black</div>
+      <div class="demo-box chai-bg-teal-500 chai-rounded-lg chai-px-5 chai-py-3 chai-opacity-70">chai-opacity-70</div>
+    </div>
+  </div>
+
+  <footer>ChaiTailwind &nbsp;·&nbsp; MIT License &nbsp;·&nbsp; Zero dependencies &nbsp;·&nbsp; ~6 KB unminified</footer>
+
+  <script src="chai-tailwind.js"></script>
+
+</body>
+
+</html>
